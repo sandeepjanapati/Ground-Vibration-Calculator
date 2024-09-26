@@ -18,5 +18,5 @@ In this implementation, TensorFlow is utilized to implement an Artificial Neural
 I made a website from the results of neural networks model by using Python, html, java script, pandas , numpy and replit. Users can easily access my website and can calculate ground vibration by entering the input values Spacing, Burden, Powder Factor, MCPD, Distance accordingly in the spaces provided for them. Users can also view their previously calculated values in the history section provided in the website.
 
 
-![Website Image](https://raw.githubusercontent.com/sandeepjanapati/Ground-Vibration-Calculator/blob/main/Website%20Image.png)
+![Website Image](https://github.com/sandeepjanapati/Ground-Vibration-Calculator/blob/main/website.png)
 
