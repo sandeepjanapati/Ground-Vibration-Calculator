@@ -294,6 +294,50 @@
             display: inline-block; /* Ensures proper spacing */
             text-decoration: none; /* Removes underline */
         }
+
+        /* Profile container for the image and LinkedIn preview */
+        .profile-container {
+            position: relative; /* Ensures iframe positions relative to this container */
+            display: inline-block;
+        }
+        
+        /* Profile image styling */
+        .profile-image {
+            border: 5px solid blue;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease; /* Adds a slight zoom on hover */
+        }
+        
+        .profile-container:hover .profile-image {
+            transform: scale(1.1); /* Zooms the image slightly on hover */
+        }
+        
+        /* LinkedIn iframe preview styling */
+        .linkedin-preview {
+            position: absolute;
+            top: 170px; /* Positions the iframe below the profile image */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px; /* Adjust preview width */
+            height: 400px; /* Adjust preview height */
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a shadow for a polished look */
+            visibility: hidden; /* Hidden by default */
+            opacity: 0; /* Fully transparent */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth appearance */
+            z-index: 10; /* Ensures it stays above other elements */
+        }
+        
+        /* Show iframe on hover */
+        .profile-container:hover .linkedin-preview {
+            visibility: visible;
+            opacity: 1;
+        }
+
         
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     </style>
@@ -355,17 +399,26 @@
     <div class="container" id="contactSection">
         <div class="contact-info">
             <h2>Contact Me</h2>
-            <a href="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" target="_blank">
-                <img 
-                    class="profile-image" 
-                    src="https://media.licdn.com/dms/image/v2/D5603AQF6Zr1mvS-rFg/profile-displayphoto-shrink_800_800/B56ZOHXJeaG4Ac-/0/1733142813360?e=1738800000&v=beta&t=mfLImJqGd9FJX-W3haMFL9yCpswZ5KeN90gI-yzLZ0M" 
-                    alt="Profile Picture">
-            </a>
+            <div class="profile-container">
+                <a href="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" target="_blank">
+                    <img 
+                        class="profile-image" 
+                        src="https://media.licdn.com/dms/image/v2/D5603AQF6Zr1mvS-rFg/profile-displayphoto-shrink_800_800/B56ZOHXJeaG4Ac-/0/1733142813360?e=1738800000&v=beta&t=mfLImJqGd9FJX-W3haMFL9yCpswZ5KeN90gI-yzLZ0M" 
+                        alt="Profile Picture">
+                </a>
+                <iframe 
+                    class="linkedin-preview" 
+                    src="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" 
+                    title="LinkedIn Preview"
+                    loading="lazy">
+                </iframe>
+            </div>
             <p class="name">Janapati Sandeep</p>
             <p>Email: janapati.sandeep.min21@itbhu.ac.in</p>
             <p>Address: IIT BHU, Varanasi, Uttar Pradesh, India</p>
         </div>
     </div>
+
 
 
     <script>
