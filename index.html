@@ -288,6 +288,38 @@
             }
         }
 
+        /* Basic styling for the profile link */
+        .profile-link {
+            position: relative; /* Allows the tooltip to position relative to this element */
+            display: inline-block; /* Ensures proper spacing */
+            text-decoration: none; /* Removes underline */
+        }
+        
+        /* Tooltip styling */
+        .profile-link::after {
+            content: "LinkedIn: Sandeep Yadav"; /* Text to display on hover */
+            position: absolute;
+            bottom: -40px; /* Adjust distance from the image */
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            color: #fff; /* White text for contrast */
+            padding: 8px 12px; /* Adds some padding for readability */
+            border-radius: 8px; /* Rounds the corners */
+            font-size: 14px; /* Adjust text size */
+            font-family: Arial, sans-serif; /* Use a clean font */
+            white-space: nowrap; /* Prevents text wrapping */
+            opacity: 0; /* Initially hidden */
+            visibility: hidden; /* Initially hidden */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth appearance */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adds a slight shadow */
+        }
+        
+        /* Show tooltip on hover */
+        .profile-link:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
 
 
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -350,7 +382,7 @@
     <div class="container" id="contactSection">
             <div class="contact-info">
                 <h2>Contact Me</h2>
-                <a href="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" target="_blank">
+                <a href="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" target="_blank" class="profile-link">
                     <img 
                         class="profile-image" 
                         src="https://media.licdn.com/dms/image/v2/D5603AQF6Zr1mvS-rFg/profile-displayphoto-shrink_800_800/B56ZOHXJeaG4Ac-/0/1733142813360?e=1738800000&v=beta&t=mfLImJqGd9FJX-W3haMFL9yCpswZ5KeN90gI-yzLZ0M" 
