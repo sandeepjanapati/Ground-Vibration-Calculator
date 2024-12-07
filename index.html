@@ -250,15 +250,44 @@
         }
 
         .profile-image {
-            border: 5px solid blue; /* Adds a blue border */
-            border-radius: 50%; /* Makes the border circular */
             width: 150px; /* Adjust size as needed */
             height: 150px; /* Ensure it's a circle */
+            border-radius: 50%; /* Makes the border circular */
             object-fit: cover; /* Ensures the image fits within the circle */
             display: block; /* Prevents extra spacing around the image */
             margin: 0 auto; /* Centers the image if needed */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow for a nicer effect */
+            position: relative; /* Allows pseudo-elements to position relative to this image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Adds a soft shadow around the image */
         }
+        
+        /* Adds the shiny blue circle */
+        .profile-image::before {
+            content: "";
+            position: absolute;
+            top: -10px; /* Adjust thickness of glow */
+            left: -10px; /* Adjust thickness of glow */
+            width: 170px; /* Slightly larger than the image */
+            height: 170px; /* Slightly larger than the image */
+            border-radius: 50%; /* Ensures the border is circular */
+            background: linear-gradient(135deg, #1e90ff, #00bfff, #87cefa); /* Gradient for richness */
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.8), 0 0 25px rgba(0, 191, 255, 0.6); /* Adds a glowing effect */
+            z-index: -1; /* Places the circle behind the image */
+            animation: shine 2s infinite; /* Adds a shiny animation */
+        }
+        
+        /* Keyframes for shining effect */
+        @keyframes shine {
+            0% {
+                box-shadow: 0 0 10px rgba(30, 144, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(30, 144, 255, 1), 0 0 30px rgba(0, 191, 255, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(30, 144, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.6);
+            }
+        }
+
 
 
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
