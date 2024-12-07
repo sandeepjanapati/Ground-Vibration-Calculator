@@ -249,6 +249,18 @@
             margin-bottom: 10px;
         }
 
+        .profile-image {
+            border: 5px solid blue; /* Adds a blue border */
+            border-radius: 50%; /* Makes the border circular */
+            width: 150px; /* Adjust size as needed */
+            height: 150px; /* Ensure it's a circle */
+            object-fit: cover; /* Ensures the image fits within the circle */
+            display: block; /* Prevents extra spacing around the image */
+            margin: 0 auto; /* Centers the image if needed */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow for a nicer effect */
+        }
+
+
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     </style>
 </head>
@@ -310,12 +322,15 @@
             <div class="contact-info">
                 <h2>Contact Me</h2>
                 <a href="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" target="_blank">
-                    <img src="https://media.licdn.com/dms/image/v2/D5603AQF6Zr1mvS-rFg/profile-displayphoto-shrink_800_800/B56ZOHXJeaG4Ac-/0/1733142813360?e=1738800000&v=beta&t=mfLImJqGd9FJX-W3haMFL9yCpswZ5KeN90gI-yzLZ0M">
+                    <img 
+                        class="profile-image" 
+                        src="https://media.licdn.com/dms/image/v2/D5603AQF6Zr1mvS-rFg/profile-displayphoto-shrink_800_800/B56ZOHXJeaG4Ac-/0/1733142813360?e=1738800000&v=beta&t=mfLImJqGd9FJX-W3haMFL9yCpswZ5KeN90gI-yzLZ0M" 
+                        alt="Profile Picture">
                 </a>
                 <p class="name">Janapati Sandeep</p>
                 <p>Email: janapati.sandeep.min21@itbhu.ac.in</p>
                 <p>Address: IIT BHU, Varanasi, Uttar Pradesh, India</p>
-        </div>
+            </div>
     </div>
 
     <script>
