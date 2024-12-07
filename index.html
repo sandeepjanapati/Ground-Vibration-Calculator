@@ -249,6 +249,7 @@
             margin-bottom: 10px;
         }
 
+        /* Profile image styling */
         .profile-image {
             width: 150px; /* Adjust size as needed */
             height: 150px; /* Ensure it's a circle */
@@ -258,6 +259,7 @@
             margin: 0 auto; /* Centers the image if needed */
             position: relative; /* Allows pseudo-elements to position relative to this image */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Adds a soft shadow around the image */
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
         }
         
         /* Adds the shiny blue circle */
@@ -287,7 +289,12 @@
                 box-shadow: 0 0 10px rgba(30, 144, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.6);
             }
         }
-
+        
+        /* Zoom effect when hovering over the profile image */
+        .profile-image:hover {
+            transform: scale(1.2); /* Zoom in on hover */
+        }
+        
         /* Basic styling for the profile link */
         .profile-link {
             position: relative; /* Allows the tooltip to position relative to this element */
