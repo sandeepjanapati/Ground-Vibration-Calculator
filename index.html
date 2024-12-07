@@ -295,78 +295,6 @@
             text-decoration: none; /* Removes underline */
         }
         
-        /* Tooltip styling */
-        .profile-link::after {
-            content: "LinkedIn: Sandeep Yadav"; /* Text to display on hover */
-            position: absolute;
-            bottom: -40px; /* Adjust distance from the image */
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-            color: #fff; /* White text for contrast */
-            padding: 8px 12px; /* Adds some padding for readability */
-            border-radius: 8px; /* Rounds the corners */
-            font-size: 14px; /* Adjust text size */
-            font-family: Arial, sans-serif; /* Use a clean font */
-            white-space: nowrap; /* Prevents text wrapping */
-            opacity: 0; /* Initially hidden */
-            visibility: hidden; /* Initially hidden */
-            transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth appearance */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adds a slight shadow */
-        }
-
-        /* Profile Container */
-        .profile-container {
-            position: relative; /* Allows the iframe to be positioned relative to the container */
-            display: inline-block;
-            text-align: center;
-        }
-        
-        /* Profile Image */
-        .profile-image {
-            border: 5px solid blue;
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            transition: transform 0.3s ease; /* Smooth zoom effect on hover */
-        }
-        
-        .profile-container:hover .profile-image {
-            transform: scale(1.1); /* Slight zoom effect */
-        }
-        
-        /* LinkedIn Preview */
-        .linkedin-preview {
-            position: absolute;
-            top: 170px; /* Adjust as per your layout */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px; /* Width of the preview */
-            height: 400px; /* Height of the preview */
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
-            visibility: hidden; /* Hidden by default */
-            opacity: 0; /* Transparent initially */
-            transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth appearance */
-            z-index: 10; /* Ensures it appears on top */
-        }
-        
-        /* Show LinkedIn Preview on Hover */
-        .profile-container:hover .linkedin-preview {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        
-        /* Show tooltip on hover */
-        .profile-link:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
-
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     </style>
 </head>
@@ -425,29 +353,20 @@
 
     <!-- Contact Section -->
     <div class="container" id="contactSection">
-            <div class="contact-info">
-                <h2>Contact Me</h2>
-                <!-- Profile Container -->
-                <div class="profile-container">
-                    <a href="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" target="_blank" class="profile-link">
-                        <img 
-                            class="profile-image" 
-                            src="https://media.licdn.com/dms/image/v2/D5603AQF6Zr1mvS-rFg/profile-displayphoto-shrink_800_800/B56ZOHXJeaG4Ac-/0/1733142813360?e=1738800000&v=beta&t=mfLImJqGd9FJX-W3haMFL9yCpswZ5KeN90gI-yzLZ0M" 
-                            alt="Profile Picture">
-                    </a>
-                    <!-- LinkedIn Preview -->
-                    <iframe 
-                        class="linkedin-preview" 
-                        src="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" 
-                        title="LinkedIn Preview"
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <p class="name">Janapati Sandeep</p>
-                <p>Email: janapati.sandeep.min21@itbhu.ac.in</p>
-                <p>Address: IIT BHU, Varanasi, Uttar Pradesh, India</p>
-            </div>
+        <div class="contact-info">
+            <h2>Contact Me</h2>
+            <a href="https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239" target="_blank">
+                <img 
+                    class="profile-image" 
+                    src="https://media.licdn.com/dms/image/v2/D5603AQF6Zr1mvS-rFg/profile-displayphoto-shrink_800_800/B56ZOHXJeaG4Ac-/0/1733142813360?e=1738800000&v=beta&t=mfLImJqGd9FJX-W3haMFL9yCpswZ5KeN90gI-yzLZ0M" 
+                    alt="Profile Picture">
+            </a>
+            <p class="name">Janapati Sandeep</p>
+            <p>Email: janapati.sandeep.min21@itbhu.ac.in</p>
+            <p>Address: IIT BHU, Varanasi, Uttar Pradesh, India</p>
+        </div>
     </div>
+
 
     <script>
         // Show the Home section by default
