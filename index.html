@@ -359,6 +359,7 @@
             <div id="historyList"></div>
         </div>
     </div>
+    
 
     <!-- Contact Section -->
     <div class="container" id="contactSection">
@@ -379,66 +380,122 @@
 
 
     <script>
-        // Show the Home section by default
-        document.getElementById('home').style.display = 'block';
-
-        // Toggle navigation menu in mobile view
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
+    // Function to download history as CSV
+    function downloadHistoryAsCSV() {
+        const storedHistory = JSON.parse(localStorage.getItem('history')) || [];
+        if (storedHistory.length === 0) {
+            alert("No history available to download!");
+            return;
         }
 
-        // Function to display the selected section
-        function showSection(sectionId) {
-            // Hide all sections
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('historySection').style.display = 'none';
-            document.getElementById('contactSection').style.display = 'none';
+        const headers = ['Spacing (m)', 'Burden (m)', 'Powder Factor (kg/m^3)', 'MCPD (kg)', 'Distance (m)', 'Ground Vibration (mm/s)', 'Timestamp'];
+        const rows = storedHistory.map(item => [
+            item.spacing,
+            item.burden,
+            item.powderFactor,
+            item.mcpd,
+            item.distance,
+            item.groundVibration,
+            item.timestamp
+        ]);
 
-            // Show the selected section
-            document.getElementById(sectionId).style.display = 'block';
-
-            // Hide the mobile menu after clicking a link
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.remove('active');
-        }
-
-        let historyCount = 0;
-
-        // Load history from localStorage
-        function loadHistory() {
-                const historyList = document.getElementById('historyList');
-                const storedHistory = JSON.parse(localStorage.getItem('history')) || [];
-                historyCount = storedHistory.length;
-
-                storedHistory.forEach((item, index) => {
-                    const historyItem = document.createElement('div');
-                    historyItem.className = 'history-item';
-                    historyItem.innerHTML = `${index + 1}) S: ${item.spacing}, B: ${item.burden}, PF: ${item.powderFactor}, M: ${item.mcpd}, D: ${item.distance}, PPV: ${item.groundVibration} mm/s <span class="timestamp">${item.timestamp}</span>`;
-                    historyList.appendChild(historyItem);
-                });
-
-                if (storedHistory.length > 0) {
-                    document.getElementById('history').style.display = 'block';
-            }
-        }
-
-        // Save history to localStorage
-        function saveHistory(data) {
-            const storedHistory = JSON.parse(localStorage.getItem('history')) || [];
-            storedHistory.push(data);
-            localStorage.setItem('history', JSON.stringify(storedHistory));
-        }
-
-        // Initial load of history
-        loadHistory();
-
-        document.getElementById("calcForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            calculateResult();
+        let csvContent = headers.join(',') + '\n';
+        rows.forEach(row => {
+            csvContent += row.join(',') + '\n';
         });
 
-        function calculateResult() {
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'Ground_Vibration_Calculator-History_Report.csv';
+
+        // Ensure the link is triggered for download
+        link.click();
+    }
+
+    // Function to add the Download CSV button
+    function addDownloadButton() {
+        const downloadButton = document.createElement('button');
+        downloadButton.textContent = 'Download CSV';
+        downloadButton.style.padding = '10px 20px';
+        downloadButton.style.fontSize = '16px';
+        downloadButton.style.cursor = 'pointer';
+        downloadButton.style.marginBottom = '20px';
+        downloadButton.onclick = downloadHistoryAsCSV;
+
+        const historySection = document.getElementById('history');
+        if (historySection) {
+            historySection.appendChild(downloadButton);
+        } else {
+            console.error("History section not found!");
+        }
+    }
+
+    // Call the function to add the download button after the page has loaded
+    window.onload = function() {
+        addDownloadButton(); // Ensure the button is added after page load
+    };
+
+    // Show the Home section by default
+    document.getElementById('home').style.display = 'block';
+
+    // Toggle navigation menu in mobile view
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
+    // Function to display the selected section
+    function showSection(sectionId) {
+        // Hide all sections
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('historySection').style.display = 'none';
+        document.getElementById('contactSection').style.display = 'none';
+
+        // Show the selected section
+        document.getElementById(sectionId).style.display = 'block';
+
+        // Hide the mobile menu after clicking a link
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.remove('active');
+    }
+
+    let historyCount = 0;
+
+    // Load history from localStorage
+    function loadHistory() {
+        const historyList = document.getElementById('historyList');
+        const storedHistory = JSON.parse(localStorage.getItem('history')) || [];
+        historyCount = storedHistory.length;
+
+        storedHistory.forEach((item, index) => {
+            const historyItem = document.createElement('div');
+            historyItem.className = 'history-item';
+            historyItem.innerHTML = `${index + 1}) S: ${item.spacing}, B: ${item.burden}, PF: ${item.powderFactor}, M: ${item.mcpd}, D: ${item.distance}, PPV: ${item.groundVibration} mm/s <span class="timestamp">${item.timestamp}</span>`;
+            historyList.appendChild(historyItem);
+        });
+
+        if (storedHistory.length > 0) {
+            document.getElementById('history').style.display = 'block';
+        }
+    }
+
+    // Save history to localStorage
+    function saveHistory(data) {
+        const storedHistory = JSON.parse(localStorage.getItem('history')) || [];
+        storedHistory.push(data);
+        localStorage.setItem('history', JSON.stringify(storedHistory));
+    }
+
+    // Initial load of history
+    loadHistory();
+
+    document.getElementById("calcForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        calculateResult();
+    });
+
+    function calculateResult() {
         let spacing = parseFloat(document.getElementById('spacing').value);
         let burden = parseFloat(document.getElementById('burden').value);
         let powderFactor = parseFloat(document.getElementById('powderFactor').value);
@@ -461,33 +518,32 @@
         resultDiv.textContent = `Predicted Ground Vibration: ${groundVibration.toFixed(3)} mm/s`;
         resultDiv.style.display = "block";
 
-
-
-            // Add to history
-            let now = new Date();
-            let timestamp = now.toLocaleDateString('en-GB') + ', ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
-                let historyItemData = {
-                spacing, burden, powderFactor, mcpd, distance,
-                groundVibration: groundVibration.toFixed(3),
-                timestamp
-            };
-
-            // Save history item to localStorage
-            saveHistory(historyItemData);
-
-            // Add history item to the list
-            let historyList = document.getElementById('historyList');
-            historyCount++;
-            let historyItem = document.createElement('div');
-            historyItem.className = 'history-item';
-            historyItem.innerHTML = `${historyCount}) S: ${spacing}, B: ${burden}, PF: ${powderFactor}, M: ${mcpd}, D: ${distance}, PPV: ${groundVibration.toFixed(3)} mm/s <span class="timestamp">${timestamp}</span>`;
-            historyList.appendChild(historyItem);
-            document.getElementById('history').style.display = 'block';    
-            // Clear the input fields
-            document.getElementById('calcForm').reset();
+        // Add to history
+        let now = new Date();
+        let timestamp = now.toLocaleDateString('en-GB') + ', ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
+        let historyItemData = {
+            spacing, burden, powderFactor, mcpd, distance,
+            groundVibration: groundVibration.toFixed(3),
+            timestamp
         };
-    </script>
+
+        // Save history item to localStorage
+        saveHistory(historyItemData);
+
+        // Add history item to the list
+        let historyList = document.getElementById('historyList');
+        historyCount++;
+        let historyItem = document.createElement('div');
+        historyItem.className = 'history-item';
+        historyItem.innerHTML = `${historyCount}) S: ${spacing}, B: ${burden}, PF: ${powderFactor}, M: ${mcpd}, D: ${distance}, PPV: ${groundVibration.toFixed(3)} mm/s <span class="timestamp">${timestamp}</span>`;
+        historyList.appendChild(historyItem);
+        document.getElementById('history').style.display = 'block';    
+
+        // Clear the input fields
+        document.getElementById('calcForm').reset();
+    };
+</script>
+
 </body>
 
 </html>
-
