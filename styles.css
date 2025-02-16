@@ -1,23 +1,23 @@
 /* Global Styles */
 :root {
-    --primary-color: #007bff;
-    --primary-darker: #0056b3;
-    --secondary-color: #6c757d;
-    --text-color: #343a40;
-    --bg-color: #f8f9fa;
+    --primary-color: #673ab7; /* Modern purple */
+    --primary-darker: #512da8; /* Darker purple */
+    --secondary-color: #9c27b0; /* Another shade of purple */
+    --text-color: #333; /* Dark grey */
+    --bg-color: #f5f5f5; /* Light grey background */
     --card-bg-color: #fff;
-    --border-color: #dee2e6;
-    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
-    --transition-duration: 0.3s; /* Increased for smoother transitions */
+    --border-color: #ddd; /* Lighter grey border */
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+    --transition-duration: 0.3s;
     --hover-transition-duration: 0.2s;
 
     /* Dark Theme */
-    --dark-text-color: #e0e0e0;
-    --dark-bg-color: #000000;
-    --dark-card-bg-color: #222;
-    --dark-border-color: #444;
-    --dark-input-bg-color: #333;
-    --dark-input-text-color: #e0e0e0;
+    --dark-text-color: #eee;
+    --dark-bg-color: #121212; /* Darker background */
+    --dark-card-bg-color: #1e1e1e; /* Darker card */
+    --dark-border-color: #333;
+    --dark-input-bg-color: #252525;
+    --dark-input-text-color: #eee;
     --navbar-height: 70px;
 }
 
@@ -34,12 +34,15 @@ body {
     padding: 0;
     transition: background-color var(--transition-duration), color var(--transition-duration);
     min-height: 100vh;
-    overflow-x: hidden;  /* Prevent horizontal scrollbar */
+    overflow-x: hidden;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
+
 
 /* Animations */
 @keyframes fadeIn {
@@ -47,11 +50,13 @@ body {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 
 /* Navbar */
 .navbar {
@@ -67,7 +72,9 @@ body {
     z-index: 100;
     height: var(--navbar-height);
     transition: background-color var(--transition-duration);
+    border-bottom: 1px solid var(--border-color);
 }
+
 
 .navbar h1 {
     font-size: 1.75rem;
@@ -76,6 +83,8 @@ body {
     letter-spacing: 0.05em;
     transition: color var(--transition-duration);
 }
+
+
 
 /* Navigation Links */
 .nav-links {
@@ -96,6 +105,8 @@ body {
     color: var(--primary-color);
 }
 
+
+
 /* Theme Toggle */
 .theme-toggle {
     cursor: pointer;
@@ -104,10 +115,13 @@ body {
     transition: color var(--transition-duration), transform var(--transition-duration);
 }
 
+
 .theme-toggle:hover {
     color: var(--primary-color);
-    transform: scale(1.1); /* Enlarge on hover */
+    transform: scale(1.1);
 }
+
+
 
 /* Hamburger Menu */
 .hamburger {
@@ -116,6 +130,7 @@ body {
     cursor: pointer;
     transition: transform var(--hover-transition-duration);
 }
+
 
 .hamburger:hover {
     transform: scale(1.1);
@@ -130,6 +145,7 @@ body {
     transition: background-color var(--transition-duration);
 }
 
+
 /* Main Content */
 main {
     padding: 2rem;
@@ -141,8 +157,9 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    animation: fadeIn 0.5s ease-out; /* Fade-in animation */
+    animation: fadeIn 0.5s ease-out;
 }
+
 
 .container {
     max-width: 900px;
@@ -153,8 +170,9 @@ main {
     padding: 2rem;
     display: none;
     transition: background-color var(--transition-duration);
-    animation: fadeIn 0.5s ease-out; /* Fade-in animation */
+    animation: fadeIn 0.5s ease-out;
 }
+
 
 /* Section Headings */
 h2 {
@@ -163,14 +181,19 @@ h2 {
     margin-bottom: 1.25rem;
     text-align: center;
     font-weight: 500;
-    border-bottom: 2px solid var(--primary-color);  /* Changed to primary color */
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 0.75rem;
     transition: border-bottom var(--hover-transition-duration);
 }
 
+
+
 h2:hover {
     border-bottom-color: var(--primary-darker);
 }
+
+
+
 
 /* Form Styling */
 .form-group {
@@ -186,6 +209,7 @@ h2:hover {
     transition: color var(--transition-duration);
 }
 
+
 .form-group input,
 .form-group select {
     width: 100%;
@@ -198,12 +222,15 @@ h2:hover {
     color: var(--text-color);
 }
 
+
 .form-group input:focus,
 .form-group select:focus {
     border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
+
 
 .unit-row {
     display: flex;
@@ -216,17 +243,21 @@ h2:hover {
     padding: 0.3rem;
     font-size: 0.8rem;
     max-width: 70px;
-    cursor: pointer; /* Indicate it's selectable */
+    cursor: pointer;
     transition: border-color var(--transition-duration);
 }
+
+
 
 .unit-row select:hover {
     border-color: var(--primary-color);
 }
 
+
 .unit-row input {
     flex-grow: 1;
 }
+
 
 /* Button Styles */
 button {
@@ -239,7 +270,14 @@ button {
     cursor: pointer;
     transition: background-color var(--transition-duration), transform var(--hover-transition-duration), box-shadow var(--hover-transition-duration);
     box-shadow: var(--box-shadow);
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
 }
+
+
+
 
 button:hover {
     background-color: var(--primary-darker);
@@ -247,10 +285,34 @@ button:hover {
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
+
 button:active {
     transform: translateY(0);
     box-shadow: none;
 }
+
+
+button:after { /* ripple effect */
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+button:active:after {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+}
+
+
+
 
 /* Result Container */
 .button-result-container {
@@ -259,6 +321,8 @@ button:active {
     align-items: flex-end;
     margin-top: 1rem;
 }
+
+
 
 #result {
     font-size: 1.1rem;
@@ -269,10 +333,13 @@ button:active {
     transition: color var(--transition-duration);
 }
 
+
+
 /* History Display */
 #historySection {
     overflow-x: auto;
 }
+
 
 #historyTable {
     width: 100%;
@@ -281,13 +348,17 @@ button:active {
     box-shadow: var(--box-shadow);
     border-radius: 0.5rem;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
+
+
 
 #historyTable thead {
     background-color: var(--primary-color);
     color: #fff;
     font-weight: 500;
 }
+
 
 #historyTable th,
 #historyTable td {
@@ -297,19 +368,27 @@ button:active {
     transition: background-color var(--hover-transition-duration), color var(--hover-transition-duration);
 }
 
+
+
+
 #historyTable tbody tr:nth-child(even) {
     background-color: var(--bg-color);
 }
 
+
 #historyTable tbody tr:hover {
     background-color: rgba(0, 123, 255, 0.05);
 }
+
 
 #historyTable td {
     font-size: 0.8rem;
     color: var(--text-color);
     transition: background-color var(--transition-duration), color var(--transition-duration);
 }
+
+
+
 
 /* History Buttons */
 .history-buttons {
@@ -318,6 +397,8 @@ button:active {
     gap: 0.8rem;
     margin-top: 1.2rem;
 }
+
+
 
 /* Contact Section */
 .contact-info {
@@ -330,15 +411,19 @@ button:active {
     transition: background-color var(--transition-duration), color var(--transition-duration);
 }
 
+
 .contact-info h2 {
     font-size: 1.5rem;
     margin-bottom: 0.6rem;
 }
 
+
 .contact-info p {
     margin: 0.2rem 0;
     transition: color var(--transition-duration);
 }
+
+
 
 .contact-info a {
     color: var(--primary-color);
@@ -346,10 +431,12 @@ button:active {
     transition: color var(--hover-transition-duration);
 }
 
+
 .contact-info a:hover {
     text-decoration: underline;
     color: var(--primary-darker);
 }
+
 
 .contact-info .name {
     font-size: 1.8rem;
@@ -357,6 +444,7 @@ button:active {
     margin-bottom: 0.4rem;
     transition: color var(--transition-duration);
 }
+
 
 .profile-image {
     width: 100px;
@@ -369,14 +457,21 @@ button:active {
     transition: transform var(--hover-transition-duration), box-shadow var(--hover-transition-duration);
 }
 
+
+
+
 .profile-image:hover {
     transform: scale(1.1);
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
 }
+
 
 .profile-link {
     text-decoration: none;
 }
+
+
+
 
 /* Validation Styles */
 .error {
@@ -385,6 +480,9 @@ button:active {
     margin-top: 0.2rem;
     transition: color var(--transition-duration);
 }
+
+
+
 
 /* Dark Mode Styles */
 [data-theme="dark"] {
@@ -395,6 +493,7 @@ button:active {
     --form-label-color: #999;
 }
 
+
 [data-theme="dark"] .form-group input,
 [data-theme="dark"] .form-group select {
     background-color: var(--dark-input-bg-color);
@@ -402,67 +501,81 @@ button:active {
     border-color: var(--dark-border-color);
 }
 
+
 [data-theme="dark"] .navbar {
-    box-shadow: none; /* Remove shadow in dark mode */
+    box-shadow: none;
 }
+
+
+
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+
     /* General */
     main {
-        padding: 1rem 0; /* Reduced top/bottom padding, removed side padding */
+        padding: 1rem 0;
     }
 
     .container {
-        padding: 1rem; /* Reduced padding inside containers */
+        padding: 1rem;
         border-radius: 0;
         box-shadow: none;
     }
+
 
     /* Nav Bar for Mobile Devices */
     .navbar {
         flex-direction: column;
         align-items: flex-start;
-        padding: 0.5rem 1rem; /* Reduced padding */
+        padding: 0.5rem 1rem;
     }
+
 
     .navbar h1 {
         margin-bottom: 0.5rem;
-        font-size: 1.3rem; /* Smaller title */
+        font-size: 1.3rem;
     }
+
+
 
     .nav-links {
         width: 100%;
         flex-direction: column;
         align-items: flex-start;
         display: none;
-        animation: fadeIn 0.3s ease-out forwards; /* Add fade-in animation */
-        background-color: var(--card-bg-color); /*Ensure menu has background*/
-        box-shadow: var(--box-shadow); /* Add shadow to the menu */
-        margin-top: 0.5rem; /* Add space below the title */
-        border-radius: 0.5rem; /* Rounded corners for the menu */
-        overflow: hidden; /* Clip rounded corners */
-        position: absolute; /* Position absolutely */
-        top: 100%; /* Position below the navbar */
-        left: 0; /* Align to the left */
+        animation: fadeIn 0.3s ease-out forwards;
+        background-color: var(--card-bg-color);
+        box-shadow: var(--box-shadow);
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
     }
+
 
     .nav-links.active {
         display: flex;
     }
 
+
     .nav-links a {
-        padding: 0.75rem 1rem; /* Added horizontal padding */
+        padding: 0.75rem 1rem;
         border-bottom: 1px solid var(--border-color);
         width: 100%;
         transition: color var(--hover-transition-duration);
-        font-size: 1rem; /* Adjusted font size in menu */
-        text-align: left; /* Added text alignment */
+        font-size: 1rem;
+        text-align: left;
     }
+
+
 
     .nav-links a:hover {
         color: var(--primary-color);
     }
+
 
     .hamburger {
         display: flex;
@@ -474,27 +587,37 @@ button:active {
         background-color: var(--bg-color);
     }
 
+
+
     .hamburger div {
         width: 22px;
         height: 2px;
         margin: 3px 0;
     }
 
+
     /* Section Headings */
     h2 {
-        font-size: 1.5rem; /* Smaller heading size */
+        font-size: 1.5rem;
         margin-bottom: 1rem;
         padding-bottom: 0.5rem;
     }
+
+
 
     /* Form Element */
     .form-group {
         margin-bottom: 0.8rem;
     }
 
+
+
     .form-group label {
-        font-size: 0.9rem; /* Slightly smaller label font */
+        font-size: 0.9rem;
     }
+
+
+
 
     .form-group input,
     .form-group select {
@@ -502,16 +625,22 @@ button:active {
         font-size: 0.9rem;
     }
 
+
     /* History Section */
     #historySection {
         overflow-x: auto;
     }
 
+
+
     #historyTable th,
     #historyTable td {
         padding: 0.5rem;
-        font-size: 0.75rem; /* Smaller font in the table */
+        font-size: 0.75rem;
     }
+
+
+
 
     /* Button and Results */
     .button-result-container {
@@ -520,16 +649,24 @@ button:active {
         gap: 0.6rem;
     }
 
+
+
+
     button {
         padding: 0.5rem 1rem;
-        font-size: 0.9rem; /* Adjusted button font size */
+        font-size: 0.9rem;
     }
+
+
 
     #result {
         margin-left: 0;
         text-align: center;
-        font-size: 1rem; /*Adjusted result font size */
+        font-size: 1rem;
     }
+
+
+
 
     /* Contact Section */
     .contact-info {
@@ -537,23 +674,31 @@ button:active {
         padding: 0.8rem;
     }
 
+
     .contact-info h2 {
         font-size: 1.3rem;
     }
+
+
+
 
     .contact-info .name {
         font-size: 1.5rem;
     }
 
+
     .contact-info p,
     .contact-info a {
-        font-size: 0.8rem; /* Smaller contact information font */
+        font-size: 0.8rem;
     }
+
+
 
     .contact-info .profile-image {
         width: 70px;
         height: 70px;
     }
+
 
     /* Theme Toggle */
     .theme-toggle {
@@ -562,20 +707,27 @@ button:active {
         margin-top: 0.5rem;
     }
 
+
+
     /* Home Form */
     .home-form {
         flex-direction: column;
         gap: 1rem;
     }
 
+
     .form-column {
         width: 100%;
     }
+
+
 
     .form-group.card {
         padding: 0.8rem;
         margin-bottom: 1rem;
     }
+
+
 
     .history-buttons {
         justify-content: center;
@@ -590,9 +742,12 @@ button:active {
     gap: 1.5rem;
 }
 
+
 .form-column {
     width: 100%;
 }
+
+
 
 .form-group.card {
     background-color: var(--card-bg-color);
@@ -601,37 +756,61 @@ button:active {
     padding: 1rem;
     margin-bottom: 1.2rem;
     transition: background-color var(--transition-duration), transform var(--hover-transition-duration), box-shadow var(--hover-transition-duration);
-    animation: fadeIn 0.5s ease-out; /* Fade-in animation */
-    width: 100%; /* Ensure cards take full width */
+    animation: fadeIn 0.5s ease-out;
+    width: 100%;
+    border: 1px solid var(--border-color);
 }
+
+
+
 
 .form-group.card:hover {
     transform: translateY(-3px);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
+
+
 /* Drag and Drop Styles */
 .draggable {
-    cursor: grab; /* Change the cursor to indicate draggable */
+    cursor: grab;
 }
 
 .hovered {
-    border: 2px dashed var(--primary-color); /* Visual feedback on drag over */
+    border: 2px dashed var(--primary-color);
 }
+
+
+
 
 /* Styles for dragging history rows */
 #historyTable tbody tr.dragging {
-    opacity: 0.5; /* Make the dragging row semi-transparent */
-    background-color: #ddd;  /* Add a background color */
+    opacity: 0.5;
+    background-color: #ddd;
 }
 
+
+
+
 #historyTable tbody tr {
-    cursor: grab; /* Change cursor */
+    cursor: grab;
 }
+
+
 
 .draggable-container {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    gap: 0.8rem; /* Add gap between cards in the column */
-    width: 100%; /* Make the columns use the whole space available */
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+/* Spinner Styles */
+.spinner {
+    margin-left: 0.5rem; /* Adjust as needed */
+}
+
+.spinner i { /* Style the spinner icon */
+    font-size: 1rem; /* Adjust icon size */
+    color: #fff; /* Set icon color */
 }
